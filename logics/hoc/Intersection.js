@@ -4,9 +4,7 @@ export class Intersection extends React.Component {
   state = {
     isVisible: false,
     visibleArea: 0,
-    direction: null,
   };
-  ref = React.createRef();
 
   componentDidMount() {
     this.observer = new IntersectionObserver(([entry]) => {
@@ -18,7 +16,7 @@ export class Intersection extends React.Component {
     }, {
       threshold: .25,
     });
-    this.observer.observe(this.ref.current);
+    this.observer.observe(this.props.wrapRef.current);
   }
 
   componentWillUnmount() {
@@ -26,11 +24,7 @@ export class Intersection extends React.Component {
   }
 
   render() {
-    const {style = {}, children} = this.props;
-    return (
-      <div style={{...style}} ref={this.ref}>
-        {children(this.state)}
-      </div>
-    );
+    const {children} = this.props;
+    return children(this.state);
   }
 }

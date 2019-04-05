@@ -1,14 +1,15 @@
 import React, {Component} from 'react';
 import {Intersection} from "../logics/hoc/Intersection"
 
-class AwesomeCard extends Component {
+class AwesomeCardHoc extends Component {
+  ref = React.createRef();
   render() {
     return (
-      <Intersection style={{width: 340, height: 420, marginBottom: 40}}>
+      <Intersection wrapRef={this.ref}>
         {(intersection) => {
           const {isVisible} = intersection;
           return (
-            <div className={`AwesomeCard ${isVisible ? 'visible': ''}`}>
+            <div ref={this.ref} className={`AwesomeCard ${isVisible ? 'visible': ''}`}>
               <div className="Picture">
                 This may be a Pic
               </div>
@@ -22,6 +23,7 @@ class AwesomeCard extends Component {
                 flex-direction: column;
                 width: 340px;
                 height: 420px;
+                margin-bottom: 40px;
                 opacity: 0;
                 border: 1px solid rgba(0, 0, 0, 0.1);
                 border-radius: 6px;
@@ -51,4 +53,4 @@ class AwesomeCard extends Component {
   }
 }
 
-export default AwesomeCard;
+export default AwesomeCardHoc;
