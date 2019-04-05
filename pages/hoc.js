@@ -7,10 +7,15 @@ const Hoc = () => {
       <h1>Hoc</h1>
       <div className="Contents">
         <AwesomeCard/>
+        <AwesomeCard/>
+        <AwesomeCard/>
+        <AwesomeCard/>
       </div>
       <style>{`
         .Contents {
-          flex:
+          display: flex;
+          flex-direction: column;
+          align-items: center;
         }
       `}</style>
     </div>
